@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cursos de Nivelación de Matemáticas: Álgebra, Geometría, Cálculo Diferencial e Integral. Clases personalizadas a $5 la hora.">
+    <title>Cursos de Nivelación de Matemáticas | MathAcademy</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cambria+Math&family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           VARIABLES Y CONFIGURACIÓN GLOBAL (:root) - ESTÁNDAR UI/UX 2026
+           ========================================================================== */
+        :root {
+            --bg-dark: #090e1a;
+            --bg-card: #111a2e;
+            --bg-card-hover: #18253f;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            /* Paleta de acentos extraída minuciosamente de la publicidad */
+            --accent-yellow: #ffc107;
+            --accent-yellow-glow: rgba(255, 193, 7, 0.35);
+            --color-algebra: #00a8ff;
+            --color-geometria: #00e676;
+            --color-diferencial: #ff9800;
+            --color-integral: #d500f9;
+            --color-whatsapp: #25d366;
+
+            /* Tipografías */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+            --font-math: 'Cambria Math', 'Latin Modern Math', 'Georgia', serif;
+
+            /* Sombras y Efectos Glow */
+            --glow-yellow: 0 0 30px rgba(255, 193, 7, 0.45);
+            --shadow-card: 0 12px 35px rgba(0, 0, 0, 0.45);
+            --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ==========================================================================
+           RESET & ESTILOS BASE
+           ========================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: min(100% - 2rem, 1200px);
+            margin-inline: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ==========================================================================
+           COMPONENTES Y BOTONES
+           ========================================================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.95rem 1.8rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: var(--transition-fast);
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--color-whatsapp);
+            color: #051a0e;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.55);
+            background-color: #28e16f;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-yellow);
+            color: #000;
+            box-shadow: var(--glow-yellow);
+        }
+
+        .badge-ribbon {
+            background: linear-gradient(135deg, #ffc107, #ff9800);
+            color: #000;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: clamp(0.75rem, 2vw, 0.88rem);
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        /* ==========================================================================
+           HEADER / NAVBAR
+           ========================================================================== */
+        .header {
+            padding: 1.2rem 0;
+            background-color: rgba(9, 14, 26, 0.92);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .logo-symbol {
+            color: var(--accent-yellow);
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .logo-accent {
+            color: var(--color-algebra);
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            position: relative;
+            padding: 4rem 0 5rem;
+        }
+
+        .hero-bg-glow {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(0, 168, 255, 0.12) 0%, rgba(213, 0, 249, 0.05) 50%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 900;
+            line-height: 1.12;
+            margin-bottom: 1.2rem;
+        }
+
+        .highlight-yellow {
+            color: var(--accent-yellow);
+            display: block;
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 540px;
+        }
+
+        /* Tarjeta Destacada de Precio estilo Cinta Amarilla */
+        .price-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(135deg, #ffd700, #ffb300);
+            color: #000;
+            padding: 0.8rem 1.8rem;
+            border-radius: 14px;
+            box-shadow: var(--glow-yellow);
+            margin-bottom: 2rem;
+            transform: rotate(-2deg);
+            transition: var(--transition-fast);
+        }
+
+        .price-banner:hover {
+            transform: rotate(0deg) scale(1.03);
+        }
+
+        .price-badge {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .price-value {
+            font-family: var(--font-heading);
+            font-size: 3.4rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .price-label {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        /* ==========================================================================
+           TABLERO VISUAL DE FÓRMULAS MATEMÁTICAS (MATH BOARD ESTILIZADO)
+           ========================================================================== */
+        .math-board {
+            background: linear-gradient(145deg, rgba(17, 26, 46, 0.9), rgba(12, 19, 36, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--shadow-card), inset 0 0 20px rgba(0, 168, 255, 0.05);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .math-board-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .math-board-title {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .math-card-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--color-algebra);
+            transition: var(--transition-fast);
+        }
+
+        .math-card-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateX(5px);
+        }
+
+        .math-card-item.pitagoras { border-left-color: var(--color-geometria); }
+        .math-card-item.recta { border-left-color: var(--color-diferencial); }
+
+        .math-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Estilización Tipográfica de Alta Gama para Fórmulas Matemáticas */
+        .formula-display {
+            font-family: var(--font-math);
+            font-size: 1.4rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        /* Fracción matemática en CSS puro */
+        .frac {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            padding: 0 0.3rem;
+        }
+
+        .frac .num {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+            padding-bottom: 2px;
+        }
+
+        .frac .den {
+            padding-top: 2px;
+        }
+
+        .sqrt {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .sqrt-symbol {
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-right: 1px;
+        }
+
+        .sqrt-stem {
+            border-top: 2px solid rgba(255, 255, 255, 0.85);
+            padding: 0 3px;
+        }
+
+        .sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        /* ==========================================================================
+           MÓDULOS ACADÉMICOS
+           ========================================================================== */
+        .modules-section {
+            padding: 6rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .section-title-wrapper {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .module-card {
+            background-color: var(--bg-card);
+            border-radius: 20px;
+            padding: 2.2rem 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+
+        .card-algebra::before { background-color: var(--color-algebra); }
+        .card-geometria::before { background-color: var(--color-geometria); }
+        .card-diferencial::before { background-color: var(--color-diferencial); }
+        .card-integral::before { background-color: var(--color-integral); }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            background-color: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-algebra:hover { box-shadow: 0 15px 35px rgba(0, 168, 255, 0.25); }
+        .card-geometria:hover { box-shadow: 0 15px 35px rgba(0, 230, 118, 0.25); }
+        .card-diferencial:hover { box-shadow: 0 15px 35px rgba(255, 152, 0, 0.25); }
+        .card-integral:hover { box-shadow: 0 15px 35px rgba(213, 0, 249, 0.25); }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-icon {
+            font-family: var(--font-math);
+            font-size: 1.5rem;
+            font-weight: 700;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            flex-shrink: 0;
+        }
+
+        .card-algebra .module-icon { color: var(--color-algebra); background: rgba(0, 168, 255, 0.1); }
+        .card-geometria .module-icon { color: var(--color-geometria); background: rgba(0, 230, 118, 0.1); }
+        .card-diferencial .module-icon { color: var(--color-diferencial); background: rgba(255, 152, 0, 0.1); }
+        .card-integral .module-icon { color: var(--color-integral); background: rgba(213, 0, 249, 0.1); }
+
+        .module-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .module-list {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .module-list li {
+            position: relative;
+            padding-left: 1.6rem;
+            margin-bottom: 0.7rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .module-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-yellow);
+            font-weight: bold;
+        }
+
+        .module-list li.and-more {
+            font-style: italic;
+            opacity: 0.75;
+        }
+
+        .module-list li.and-more::before {
+            content: '•';
+        }
+
+        /* ==========================================================================
+           BENEFICIOS / CARACTERÍSTICAS
+           ========================================================================== */
+        .features-section {
+            padding: 5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: var(--transition-fast);
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 193, 7, 0.1);
+            color: var(--accent-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+        }
+
+        .feature-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================================================
+           SIMULADOR / CALCULADORA INTERACTIVA DE INVERSIÓN
+           ========================================================================== */
+        .calc-section {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #0d1527 100%);
+        }
+
+        .calc-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-card);
+        }
+
+        .calc-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .calc-control {
+            margin-bottom: 1.5rem;
+        }
+
+        .calc-control label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .calc-control span.val-highlight {
+            color: var(--accent-yellow);
+            font-weight: 700;
+        }
+
+        .calc-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #1e293b;
+            outline: none;
+            accent-color: var(--accent-yellow);
+            cursor: pointer;
+        }
+
+        .calc-result-box {
+            background: linear-gradient(145deg, rgba(255, 193, 7, 0.08), rgba(0, 168, 255, 0.08));
+            border: 1px solid rgba(255, 193, 7, 0.25);
+            border-radius: 18px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .calc-result-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .calc-total {
+            font-family: var(--font-heading);
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--accent-yellow);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .calc-details {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-top: 0.8rem;
+        }
+
+        /* ==========================================================================
+           CTA BANNER & FOOTER
+           ========================================================================== */
+        .cta-banner {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #090e1a 0%, #111a2e 100%);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cta-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.6rem, 3.8vw, 2.4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+        }
+
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            background-color: #050810;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ==========================================================================
+           BOTÓN FLOTANTE PERSISTENTE (RADAR PULSE)
+           ========================================================================== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 62px;
+            height: 62px;
+            background-color: var(--color-whatsapp);
+            color: #051a0e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            transition: var(--transition-fast);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.12);
+        }
+
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--color-whatsapp);
+            opacity: 0.6;
+            animation: radarPulse 2s infinite ease-out;
+            z-index: -1;
+        }
+
+        @keyframes radarPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.75;
+            }
+            100% {
+                transform: scale(1.9);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .hero { padding: 2rem 0 4rem; }
+            .price-banner { transform: rotate(0deg); }
+            .calc-card { padding: 1.5rem; }
+            .math-board { padding: 1.2rem; }
+            .formula-display { font-size: 1.15rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-symbol">∑</span> Math<span class="logo-accent">Academy</span>
+            </a>
+            <a href="https://wa.me/584123528314?text=Hola,%20quisiera%20más%20información%20sobre%20los%20Cursos%20de%20Nivelación%20de%20Matemáticas" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                Contactar Ahora
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg-glow"></div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="badge-ribbon">¡Fortalece tus bases, alcanza tus metas!</span>
+                <h1 class="hero-title">
+                    CURSOS DE NIVELACIÓN DE <span class="highlight-yellow">MATEMÁTICAS</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Tu éxito también es mi meta. ¡La Matemática no es difícil, solo necesita la guía correcta!
+                </p>
+
+                <!-- Tarjeta Destacada de Precio estilo Cinta Amarilla -->
+                <div class="price-banner">
+                    <div class="price-badge">¡Solo</div>
+                    <div class="price-value">$5</div>
+                    <div class="price-label">la hora!</div>
+                </div>
+
+                <div class="hero-cta-group">
+                    <a href="https://wa.me/584123528314?text=Hola,%20deseo%20reservar%20mi%20cupo%20para%20las%20clases%20de%20matemáticas" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                        </svg>
+                        Agendar Clase por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tablero Visual de Fórmulas Matemáticas (Renderizado Tipográfico de Alta Gama) -->
+            <div class="hero-visual">
+                <div class="math-board">
+                    <div class="math-board-header">
+                        <span class="math-board-title">📐 Fundamentos Clave</span>
+                        <span style="color: var(--accent-yellow); font-size: 0.85rem; font-weight: 600;">Clases a tu ritmo</span>
+                    </div>
+
+                    <!-- Fórmula Cuadrática -->
+                    <div class="math-card-item">
+                        <div class="math-label">Ecuación General de 2do Grado</div>
+                        <div class="formula-display">
+                            <span>x = </span>
+                            <div class="frac">
+                                <span class="num">
+                                    -b ± <span class="sqrt"><span class="sqrt-symbol">√</span><span class="sqrt-stem">b<span class="sup">2</span> - 4ac</span></span>
+                                </span>
+                                <span class="den">2a</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Teorema de Pitágoras y Parábola -->
+                    <div class="math-card-item pitagoras">
+                        <div class="math-label">Geometría y Funciones</div>
+                        <div class="formula-display">
+                            <span>a<span class="sup">2</span> + b<span class="sup">2</span> = c<span class="sup">2</span></span>
+                            <span style="margin: 0 0.8rem; color: var(--text-muted); font-size: 1rem;">|</span>
+                            <span>y = x<span class="sup">2</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Ecuaciones complementarias del afiche -->
+                    <div class="math-card-item recta">
+                        <div class="math-label">Geometría Analítica</div>
+                        <div class="formula-display" style="font-size: 1.15rem;">
+                            <span>2x + 3y = 6</span>
+                            <span style="margin: 0 0.5rem; color: var(--text-muted);">•</span>
+                            <span>x<span class="sup">2</span> + y<span class="sup">2</span> = 25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Módulos Académicos -->
+    <section class="modules-section" id="modulos">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">Contenido del Programa</h2>
+                <p class="section-subtitle">Aprende y domina desde lo fundamental hasta los temas avanzados</p>
+            </div>
+
+            <div class="modules-grid">
+                <!-- Álgebra -->
+                <article class="module-card card-algebra">
+                    <div class="card-header">
+                        <div class="module-icon">x²</div>
+                        <h3 class="module-title">ÁLGEBRA</h3>
+                    </div>
+                    <ul class="module-list">
+                        <li>Ecuaciones</li>
+                        <li>Funciones</li>
+                        <li>Factorización</li>
+                        <li class="and-more">...y más</li>
+                    </ul>
+                </article>
+
+                <!-- Geometría -->
+                <article class="module-card card-geometria">
+                    <div class="card-header">
+                        <div class="module-icon">△</div>
+                        <h3 class="module-title">GEOMETRÍA</h3>
+                    </div>
+                    <ul class="module-list">
+                        <li>Teoremas</li>
+                        <li>Figuras geométricas</li>
+                        <li>Áreas y volúmenes</li>
+                        <li class="and-more">...y más</li>
+                    </ul>
+                </article>
+
+                <!-- Cálculo Diferencial -->
+                <article class="module-card card-diferencial">
+                    <div class="card-header">
+                        <div class="module-icon">d/dx</div>
+                        <h3 class="module-title">CÁLCULO DIFERENCIAL</h3>
+                    </div>
+                    <ul class="module-list">
+                        <li>Límites</li>
+                        <li>Derivadas</li>
+                        <li>Aplicaciones</li>
+                        <li class="and-more">...y más</li>
+                    </ul>
+                </article>
+
+                <!-- Cálculo Integral -->
+                <article class="module-card card-integral">
+                    <div class="card-header">
+                        <div class="module-icon">∫</div>
+                        <h3 class="module-title">CÁLCULO INTEGRAL</h3>
+                    </div>
+                    <ul class="module-list">
+                        <li>Integrales</li>
+                        <li>Técnicas de integración</li>
+                        <li>Aplicaciones</li>
+                        <li class="and-more">...y más</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características del Servicio -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    </div>
+                    <h3>Refuerza tus conocimientos</h3>
+                    <p>Cierra brechas académicas y construye una base sólida para tus exámenes.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Atención individual o en grupo</h3>
+                    <p>Clases totalmente adaptadas a tu ritmo de aprendizaje personal.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Modalidad Presencial</h3>
+                    <p>Enseñanza directa, práctica y resolución de ejercicios paso a paso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador / Calculadora Interactiva de Inversión -->
+    <section class="calc-section">
+        <div class="container">
+            <div class="calc-card">
+                <div class="calc-header">
+                    <h2 class="section-title">Calculadora de Clases</h2>
+                    <p class="section-subtitle">Planifica tu nivelación a tu medida ($5 / hora)</p>
+                </div>
+
+                <div class="calc-grid">
+                    <div class="calc-inputs">
+                        <div class="calc-control">
+                            <label for="hoursRange">
+                                Horas por semana: <span class="val-highlight" id="hoursVal">2 horas</span>
+                            </label>
+                            <input type="range" id="hoursRange" class="calc-slider" min="1" max="10" value="2">
+                        </div>
+
+                        <div class="calc-control">
+                            <label for="weeksRange">
+                                Duración estimada: <span class="val-highlight" id="weeksVal">4 semanas</span>
+                            </label>
+                            <input type="range" id="weeksRange" class="calc-slider" min="1" max="12" value="4">
+                        </div>
+                    </div>
+
+                    <div class="calc-result-box">
+                        <div class="calc-result-title">Inversión Estimada</div>
+                        <div class="calc-total" id="totalAmount">$40</div>
+                        <div class="calc-details" id="calcDetails">
+                            Total de 8 horas de clase personalizada
+                        </div>
+                        <a href="#" id="calcWsBtn" class="btn btn-whatsapp" style="width: 100%;" target="_blank" rel="noopener noreferrer">
+                            Solicitar este Plan por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner CTA Final -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2 class="cta-title">¡La Matemática no es difícil, solo necesita la guía correcta!</h2>
+            <p class="cta-desc">Reserva tu primera sesión por solo <strong>$5 la hora</strong>.</p>
+            <a href="https://wa.me/584123528314?text=Hola,%20quisiera%20agendar%20una%20clase%20presencial%20de%20matemáticas" class="btn btn-whatsapp" style="font-size: 1.1rem; padding: 1rem 2.2rem;" target="_blank" rel="noopener noreferrer">
+                Contactar al 04123528314
+            </a>
+        </div>
+    </section>
+
+    <!-- Botón Flotante Persistente para WhatsApp -->
+    <a href="https://wa.me/584123528314?text=Hola,%20me%20gustaría%20agendar%20una%20clase%20de%20nivelación" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <div class="pulse-ring"></div>
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 MathAcademy - Cursos de Nivelación de Matemáticas. Modalidad Presencial.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica Interactiva (Calculadora & WhatsApp Link Generator) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hoursRange = document.getElementById('hoursRange');
+            const weeksRange = document.getElementById('weeksRange');
+            const hoursVal = document.getElementById('hoursVal');
+            const weeksVal = document.getElementById('weeksVal');
+            const totalAmount = document.getElementById('totalAmount');
+            const calcDetails = document.getElementById('calcDetails');
+            const calcWsBtn = document.getElementById('calcWsBtn');
+
+            const HOURLY_RATE = 5; // $5 la hora segun el anuncio
+
+            function updateCalculator() {
+                const hours = parseInt(hoursRange.value);
+                const weeks = parseInt(weeksRange.value);
+                
+                const totalHours = hours * weeks;
+                const totalCost = totalHours * HOURLY_RATE;
+
+                hoursVal.textContent = hours + (hours === 1 ? ' hora' : ' horas');
+                weeksVal.textContent = weeks + (weeks === 1 ? ' semana' : ' semanas');
+                
+                totalAmount.textContent = '$' + totalCost;
+                calcDetails.textContent = `Total de ${totalHours} horas de clase personalizada (${hours}h/sem por ${weeks} sem)`;
+
+                // Generar enlace dinámico pre-llenado a WhatsApp
+                const message = `Hola, utilicé la calculadora de su sitio web y me interesa un plan de nivelación de ${hours} horas a la semana durante ${weeks} semanas (${totalHours} horas en total - Est. $${totalCost}). ¿Cómo podemos agendar?`;
+                calcWsBtn.href = `https://wa.me/584123528314?text=${encodeURIComponent(message)}`;
+            }
+
+            hoursRange.addEventListener('input', updateCalculator);
+            weeksRange.addEventListener('input', updateCalculator);
+
+            // Inicializar al cargar
+            updateCalculator();
+        });
+    </script>
+</body>
+</html>
